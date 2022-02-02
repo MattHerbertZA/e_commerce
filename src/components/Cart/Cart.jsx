@@ -21,9 +21,9 @@ const Cart = ({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart
                 ))}
             </Grid>
             <div className={classes.cartDetails}>
-                <Typography variant="h4">Subtotal: {cart.subtotal.formatted_with_symbol}</Typography>
+                <Typography variant="h5">Subtotal: {cart.subtotal.formatted_with_symbol}</Typography>
             </div>
-            <div>
+            <div className={classes.buttons} >
                 <Button className={classes.emptyButton} size="large" type='button' variant="contained" color="secondary" onClick={handleEmptyCart} >
                     Empty Cart
                 </Button>
@@ -35,11 +35,10 @@ const Cart = ({ cart, handleUpdateCartQty, handleRemoveFromCart, handleEmptyCart
     )
 
     if (!cart.line_items) return 'Loading...'
-
     return (
         <Container>
             <div className={classes.toolbar} />
-            <Typography className={classes.title} variant="h3" gutterBottom>
+            <Typography className={classes.title} variant="h4" gutterBottom>
                 Your Shopping Cart
             </Typography>
             {!cart.line_items.length ? <EmptyCart /> : <FilledCart />}
