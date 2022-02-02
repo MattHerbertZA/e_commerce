@@ -10,7 +10,7 @@ export default makeStyles(() => ({
     },
     cardActions: {
         display: 'flex',
-        justifyContent: 'flex-start',
+        justifyContent: 'flex-end',
         // marginBottom: '-5%'
     },
     cardContent: {
