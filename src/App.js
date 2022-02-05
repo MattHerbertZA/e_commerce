@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { commerce } from "./lib/commerce";
-import { Products, NavBar, Cart } from './components'
+import { Products, NavBar, Cart, Banner } from './components'
 import { set } from "react-hook-form";
 
 const App = () => {
@@ -46,7 +46,7 @@ const App = () => {
     }, []);
 
 
-    console.log(cart);
+    console.log(products);
     // console.log(cart.line_items.length);
 
 
@@ -54,6 +54,8 @@ const App = () => {
         <Router>
             <div>
                 <NavBar totalItems={cart.total_items} />
+                <Banner> </Banner>
+
                 <Routes>
                     <Route path='/' element={<Products products={products} onAddToCart={handleAddToCart} />} />
                     <Route path='/cart' element={<Cart cart={cart}
