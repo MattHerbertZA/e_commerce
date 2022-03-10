@@ -7,7 +7,7 @@ import { commerce } from '../../../lib/commerce';
 
 import FormInput from '../CustomTextField';
 
-const AddressForm = ({ checkoutToken }) => {
+const AddressForm = ({ checkoutToken, next }) => {
     const [shippingCountries, setShippingCountries] = useState([]);
     const [shippingCountry, setShippingCountry] = useState('');
     const [shippingSubdivisions, setShippingSubdivisions] = useState([]);
@@ -22,7 +22,7 @@ const AddressForm = ({ checkoutToken }) => {
     const fetchShippingCountries = async (checkoutTokenId) => {
         const { countries } = await commerce.services.localeListShippingCountries(checkoutTokenId)
 
-        console.log(countries)
+        // console.log(countries)
         setShippingCountries(countries)
         setShippingCountry(Object.keys(countries)[0]);
     }
@@ -36,6 +36,9 @@ const AddressForm = ({ checkoutToken }) => {
 
     const fetchShippingOptions = async (checkoutTokenId, country, region = null) => {
         const options = await commerce.checkout.getShippingOptions(checkoutTokenId, { country, region });
+
+        console.log("options")
+        console.log(options)
 
         setShippingOptions(options);
         setShippingOption(options[0].id)
@@ -60,7 +63,7 @@ const AddressForm = ({ checkoutToken }) => {
                 Shipping Address
             </Typography>
             <FormProvider {...methods}>
-                <form onSubmit=''>
+                <form onSubmit={methods.handleSubmit((data) => next({ ...data, shippingCountry, shippingSubdivision, shippingOption }))}>
                     <Grid container spacing={3}>
                         <FormInput name={'firstName'} label="First Name" />
                         <FormInput name={'lastLame'} label="Last Name" />
@@ -87,8 +90,10 @@ const AddressForm = ({ checkoutToken }) => {
                         <Grid item xs={12} sm={6}>
                             <InputLabel>Shipping Options</InputLabel>
                             <Select value={shippingOption} fullWidth onChange={(e) => setShippingOption(e.target.value)}>
-                                {options.map((option) => (
-                                    <MenuItem key={option.id} value={option.id}>{option.label}</MenuItem>
+                                {shippingOptions.map((sO) => ({ id: sO.id, label: `${sO.description} - (${sO.price.formatted_with_symbol})` })).map((item) => (
+                                    <MenuItem key={item.id} value={item.id}>
+                                        {item.label}
+                                    </MenuItem>
                                 ))}
                             </Select>
                         </Grid>
