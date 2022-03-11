@@ -12,9 +12,9 @@ const Products = ({ products, onAddToCart }) => {
             <div className={classes.banner}>
 
             </div>
-            <Grid container justify="center" spacing={4}>
+            <Grid container justify="center" spacing={10}>
                 {products.map((product) => (
-                    <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
+                    <Grid item key={product.id} xs={12} sm={6} md={4} lg={2}>
                         <Product product={product} onAddToCart={onAddToCart} />
                     </Grid>
                 ))}
