@@ -6,8 +6,12 @@ export default makeStyles(() => ({
         maxHeight: '100%'
     },
     media: {
-        height: 250,
+        //Ensure all heights of the images are the same 
+        height: "100%",
+        aspectRatio: 16 / 9,
         paddingTop: '56.25%', // 16:9
+        width: '100%',
+        objectFit: 'cover',
     },
     cardActions: {
         display: 'flex',
