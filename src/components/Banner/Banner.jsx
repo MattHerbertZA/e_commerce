@@ -12,7 +12,9 @@ const Banner = () => {
             <div className={classes.toolbar}> </div>
             <Toolbar className={classes.footer}>
                 <Typography component={Link} to="/" variant='h6' className={classes.title} color='inherit'>
-                    <img src={logo} alt='Madz Business' height='250px' className={classes.image} />
+                    <div className={classes.test}>
+                        <img src={logo} alt='Madz Business' height='250px' className={classes.image} />
+                    </div>
                 </Typography>
                 <div className={classes.grow} />
             </Toolbar>

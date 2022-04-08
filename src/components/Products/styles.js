@@ -8,6 +8,8 @@ export default makeStyles((theme) => ({
         padding: theme.spacing(3),
         paddingLeft: 100,
         paddingRight: 100,
+        marginLeft: 300,
+        marginRight: 300
     },
     root: {
         flexGrow: 1,

@@ -16,7 +16,12 @@ export default makeStyles((theme) => ({
     title: {
         flexGrow: 1,
         display: 'flex',
+        justifyContent: "center",
         textDecoration: 'none',
+    },
+    test: {
+        display: 'flex',
+        justifyContent: "center"
     },
     footer: {
         float: 'none',
@@ -26,6 +31,9 @@ export default makeStyles((theme) => ({
     },
     image: {
         display: 'flex',
+        justifyContent: "center",
+        marginLeft: -250
+
     },
     menuButton: {
         marginRight: theme.spacing(2),
